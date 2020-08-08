@@ -1,0 +1,47 @@
+<div id="login" class="body">
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.17.2/firebase-app.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="https://www.gstatic.com/firebasejs/7.17.2/firebase-analytics.js"></script>
+
+    <script>
+        // Your web app's Firebase configuration
+        var firebaseConfig = {
+            apiKey: "AIzaSyAIPm1-3kQSsSRqABNbjlhaYainfunwvWk",
+            authDomain: "trello-67cda.firebaseapp.com",
+            databaseURL: "https://trello-67cda.firebaseio.com",
+            projectId: "trello-67cda",
+            storageBucket: "trello-67cda.appspot.com",
+            messagingSenderId: "870308370206",
+            appId: "1:870308370206:web:5730fca22bfe3daf1f9b0f",
+            measurementId: "G-SBT0NREHTD"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        firebase.analytics();
+    </script>
+    <div id="login-form-wrapper">
+        <div id="login-form" fxFlex="100%" class="description">
+            <div class="logo" fxFlex="10%">
+                <img src="assets\images\fondo1.png" />
+            </div>
+            <form name="loginForm" [formGroup]="loginForm" novalidate (ngSubmit)="login()" fxFlex="20%" fxFlex.gt-sm="25%" class="form">
+                <p class="title"> TREFIND </p>
+                <mat-form-field>
+                    <input matInput formControlName="userName" style="background: white; padding: 3%;">
+                    <mat-error *ngIf="loginFormErrors.userName.required">
+                        El nombre es obligatorio.
+                    </mat-error>
+                </mat-form-field>
+                <br>
+                <div class="submit-button">
+                    <button style="background-color: black; color: #0469a7;" mat-raised-button aria-label="LOGIN" [disabled]="loginForm.invalid" type="submit">
+                        ENTRAR
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
