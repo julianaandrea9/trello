@@ -26,24 +26,29 @@ import { NgxLoadingModule } from 'ngx-loading';
 import 'hammerjs';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
-const appRoutes: Routes = [
-  { path: 'login', component: LoginComponent }
-];
+
+import { AngularFireModule } from '@angular/fire';
+import { AngularFireDatabaseModule } from '@angular/fire/database';
+import { AngularFireAuth } from '@angular/fire/auth';
+import { AngularFireStorageModule } from '@angular/fire/storage';
+import { AngularFirestore } from '@angular/fire/firestore';
+import { environment } from '../environments/environment';
+import { BoardComponent } from './main/content/apps/board/list-board/board.component';
+import { Page404Component } from './main/content/apps/page404/page404.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    ContentComponent
+    ContentComponent,
+    BoardComponent,
+    Page404Component
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    RouterModule.forRoot(
-      appRoutes,
-      { enableTracing: true } // <-- tareas de debug
-    ),
     MatButtonModule,
     MatIconModule,
     MatMenuModule,
@@ -59,9 +64,12 @@ const appRoutes: Routes = [
     FormsModule,
     ReactiveFormsModule,
     NgxLoadingModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFireDatabaseModule,
+    AngularFireStorageModule
   ],
-  providers: [],
+  providers: [AngularFireAuth, AngularFirestore],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import * as admin from 'firebase-admin';
+import { LoginService } from './login.service';
+import { Router } from '@angular/router';
+import { AngularFireAuth } from '@angular/fire/auth';
 
 @Component({
   selector: 'app-login',
@@ -10,18 +12,51 @@ import * as admin from 'firebase-admin';
 export class LoginComponent implements OnInit {
   private loginForm: FormGroup;
   private loginFormErrors: any;
-  public userName;
+  public email: string = '';
+  public password: string = '';
   public loading = false;
   
   constructor(
-    private formBuilder: FormBuilder) {
-      this.loginFormErrors = { userName: {} };
+    private formBuilder: FormBuilder,
+    private loginService: LoginService,
+    private router: Router,
+    public afAuth: AngularFireAuth) {
+      this.loginFormErrors = { email: {}, password:{} };
      }
 
   ngOnInit() {
     this.loginForm = this.formBuilder.group({
-      userName: ['', Validators.required],
+      email: ['', Validators.required],
+      password: ['', Validators.required]
     });
+    this.onLogout()
   }
 
+  public onLogin(): void {
+    this.loginService.loginEmailUser(this.email, this.password)
+      .then((res) => {
+        this.onLoginRedirect();
+      }).catch(err => console.log('err', err));
+  }
+
+  public onLoginGoogle(): void {
+    this.loginService.loginGoogleUser()
+      .then((res) => {
+        this.onLoginRedirect();
+      }).catch(err => console.log('err', err.message));
+  }
+  public onLoginFacebook(): void {
+    this.loginService.loginFacebookUser()
+      .then((res) => {
+        this.onLoginRedirect();
+      }).catch(err => console.log('err', err.message));
+  }
+
+  onLogout() {
+    this.loginService.logoutUser();
+  }
+
+  onLoginRedirect(): void {
+    this.router.navigate(['/board/list-board']);
+  }
 }
