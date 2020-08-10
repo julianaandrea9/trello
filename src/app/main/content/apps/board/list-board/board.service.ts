@@ -37,4 +37,15 @@ export class BoardService {
         });
     });
   }
+
+  public searchBoard(params) {
+    return new Promise((resolve) => {
+      this.http.get(this.urlService.searchBoard + params, { headers: this.headersREST() })
+        .subscribe(res => {
+          resolve(res);
+        }, (err) => {
+          resolve(err);
+        });
+    });
+  }
 }

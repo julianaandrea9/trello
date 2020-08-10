@@ -15,6 +15,7 @@ export class BoardComponent implements OnInit {
   public usuario;
   public listboardUser;
   public listFav = [];
+  public query;
 
   constructor(
     private boardService: BoardService,
@@ -70,7 +71,8 @@ export class BoardComponent implements OnInit {
       event.previousIndex,
       event.currentIndex);
   }
-  drop(event: CdkDragDrop<string[]>) {
+
+  public drop(event: CdkDragDrop<string[]>) {
     if (event.previousContainer === event.container) {
       moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
     } else {
@@ -79,5 +81,19 @@ export class BoardComponent implements OnInit {
         event.previousIndex,
         event.currentIndex);
     }
+  }
+
+  public search(){   
+    this.boardService.searchBoard(this.query).then(dataService => {
+      const dataFinal = this.interpretedResponse(dataService)
+      console.log(dataFinal)
+      if (dataFinal.boards.length > 0) {
+        this.listboardUser = dataFinal.boards;
+      } else {
+        this.toasterService.pop('warning', '', 'No hay tableros disponibles');
+      }
+    }).catch(error => {
+      this.listBoard()
+      console.log(error); });
   }
 }
