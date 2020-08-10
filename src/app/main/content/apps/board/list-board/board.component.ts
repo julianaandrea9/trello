@@ -86,7 +86,6 @@ export class BoardComponent implements OnInit {
   public search(){   
     this.boardService.searchBoard(this.query).then(dataService => {
       const dataFinal = this.interpretedResponse(dataService)
-      console.log(dataFinal)
       if (dataFinal.boards.length > 0) {
         this.listboardUser = dataFinal.boards;
       } else {
