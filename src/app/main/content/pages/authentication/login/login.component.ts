@@ -15,7 +15,6 @@ export class LoginComponent implements OnInit {
   public loading = false;
   
   constructor(
-    private formBuilder: FormBuilder,
     private loginService: LoginService,
     private router: Router,
     public afAuth: AngularFireAuth) {

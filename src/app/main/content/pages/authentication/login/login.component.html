@@ -7,11 +7,11 @@
             <form name="loginForm" novalidate (ngSubmit)="onLogin()" fxFlex="20%" fxFlex.gt-sm="25%" class="form">
                 <p class="title"> TREFIND </p>
                 <mat-form-field>
-                    <input matInput formControlName="email" style="background: white; padding: 3%;" [(ngModel)]="email">
+                    <input matInput style="background: white; padding: 3%;" [(ngModel)]="email" name="email">
 
                 </mat-form-field>
                 <mat-form-field>
-                    <input matInput formControlName="password" style="background: white; padding: 3%;" type="password" [(ngModel)]="password">
+                    <input matInput style="background: white; padding: 3%;" type="password" [(ngModel)]="password" name="password">
 
                 </mat-form-field>
                 <br>
