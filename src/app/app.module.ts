@@ -6,7 +6,6 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoginComponent } from './main/content/pages/authentication/login/login.component';
 import { ContentComponent } from './main/content/content.component';
-import { RouterModule, Routes } from '@angular/router';
 import {
   MatToolbarModule,
   MatMenuModule,
@@ -19,7 +18,8 @@ import {
   MatCardModule,
   MatSlideToggleModule,
   MatSelectModule,
-  MatOptionModule
+  MatOptionModule,
+  MatGridListModule
 } from '@angular/material';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgxLoadingModule } from 'ngx-loading';
@@ -35,6 +35,11 @@ import { AngularFirestore } from '@angular/fire/firestore';
 import { environment } from '../environments/environment';
 import { BoardComponent } from './main/content/apps/board/list-board/board.component';
 import { Page404Component } from './main/content/apps/page404/page404.component';
+import { HttpClientModule} from "@angular/common/http";
+import { HttpModule } from '@angular/http';
+import { ToasterService } from 'angular2-toaster';
+import {DragDropModule} from '@angular/cdk/drag-drop';
+import { RegisterComponent } from './main/content/apps/user/register/register/register.component';
 
 
 @NgModule({
@@ -43,7 +48,8 @@ import { Page404Component } from './main/content/apps/page404/page404.component'
     LoginComponent,
     ContentComponent,
     BoardComponent,
-    Page404Component
+    Page404Component,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
@@ -67,9 +73,14 @@ import { Page404Component } from './main/content/apps/page404/page404.component'
     FlexLayoutModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireDatabaseModule,
-    AngularFireStorageModule
+    AngularFireStorageModule,
+    HttpClientModule,    
+    HttpModule,
+    MatGridListModule,
+    DragDropModule
   ],
-  providers: [AngularFireAuth, AngularFirestore],
+  providers: [AngularFireAuth, AngularFirestore, ToasterService,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

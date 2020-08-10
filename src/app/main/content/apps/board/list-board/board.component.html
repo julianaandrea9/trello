@@ -5,9 +5,43 @@
             <p style="color: #f2bf47;"> {{name}}</p>
             <p>!!! Bienvenid@ a</p>
             <p style="color: #f2bf47;"> TREFIND</p>
-        </mat-toolbar-row>
+            <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
+                <mat-icon>search</mat-icon>
+              </button> </mat-toolbar-row>
     </mat-toolbar>
 </div>
-<div>
+<div class="contenedor">
+    <div class="example-container">
+        <div cdkDropList #todoList="cdkDropList" [cdkDropListData]="listboardUser" [cdkDropListConnectedTo]="[doneList]" class="example-list" (cdkDropListDropped)="drop($event)">
+            <div class="example-box" *ngFor="let item of listboardUser" cdkDrag><span style="color: white;font-weight: bold;">{{item.name}}</span>
+                <span style="margin: 12%; margin-left: -69%;">{{item.desc}}</span>
+                <div class="divInicial">
+                    <button (click)="goToBoard(item)" class="buttonUrl">
+                    VISITAR TABLERO
+                    </button>
+                    <mat-icon (click)="favoriteBoard(item,$event)" class="buttonFav">
+                        star_outline
+                    </mat-icon>
+                </div>
+            </div>
+        </div>
+    </div>
 
+    <div class="example-containerFav">
+        <h2 style="background-color:black;color: white; text-align:center;">FAVORITOS</h2>
+        <div cdkDropList #doneList="cdkDropList" [cdkDropListData]="listFav" [cdkDropListConnectedTo]="[todoList]" class="example-list" (cdkDropListDropped)="drop($event)">
+            <div class="example-boxFav" *ngFor="let item of listFav " cdkDrag>A {{name}} le gusta:
+
+                <span style="color: yellow; margin: 12%; margin-left: -69%;">{{item.name}}</span>
+                <div class="divInicial ">
+                    <button (click)="goToBoard(item) " class="buttonUrl ">
+                    VISITAR TABLERO
+                    </button>
+                    <mat-icon class="buttonFav " style="color: black; ">
+                        star_rate
+                    </mat-icon>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

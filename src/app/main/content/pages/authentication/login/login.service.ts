@@ -54,6 +54,4 @@ export class LoginService {
   isUserAdmin(userUid) {
     return this.afs.doc<UserInterface>(`users/${userUid}`).valueChanges();
   }
-
-
 }
