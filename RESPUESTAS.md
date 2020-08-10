@@ -1,0 +1,2 @@
+Para acceder al sitio se debe ingresar a la url https://trello09.herokuapp.com/, hay dos opciones de logue, por la opción de gmail dando clic en el botón google o con el usuario admin@pruebas.com
+ y contraseña Adm1n1str4d0r
