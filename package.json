@@ -9,7 +9,7 @@
         "lint": "ng lint",
         "e2e": "ng e2e",
         "lite": "lite-server",
-        "postinstall": "ng build --prod"
+        "postinstall": "node --max_old_space_size=5048 ./node_modules/@angular/cli/bin/ng build --prod"
 
     },
     "private": true,
