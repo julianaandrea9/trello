@@ -10,8 +10,6 @@ import { AngularFireAuth } from '@angular/fire/auth';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  private loginForm: FormGroup;
-  private loginFormErrors: any;
   public email: string = '';
   public password: string = '';
   public loading = false;
@@ -21,14 +19,10 @@ export class LoginComponent implements OnInit {
     private loginService: LoginService,
     private router: Router,
     public afAuth: AngularFireAuth) {
-      this.loginFormErrors = { email: {}, password:{} };
      }
 
   ngOnInit() {
-    this.loginForm = this.formBuilder.group({
-      email: ['', Validators.required],
-      password: ['', Validators.required]
-    });
+  
     this.onLogout()
   }
 

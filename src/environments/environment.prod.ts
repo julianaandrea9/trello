@@ -1,7 +1,8 @@
-declare var data: any;
+// declare var data: any;
 
 export const environment = {
   production: true,
+  
   firebaseConfig: {
     apiKey: "AIzaSyAIPm1-3kQSsSRqABNbjlhaYainfunwvWk",
     authDomain: "trello-67cda.firebaseapp.com",
@@ -15,7 +16,7 @@ export const environment = {
 
 
   // Servicios de trello
-  getListBoard: data.basePath + '/1/members/me/boards?key=0d2103282aa6a0a4ee9eb5f71d4f5424&token=55c59307d7b366ba8bca4049518eeef5fab1aa239bbf9b375872bcbebedd25e2',
-  searchBoard: data.basePath + '/1/search?key=0d2103282aa6a0a4ee9eb5f71d4f5424&token=55c59307d7b366ba8bca4049518eeef5fab1aa239bbf9b375872bcbebedd25e2&query='
+  getListBoard: 'https://api.trello.com/' + '/1/members/me/boards?key=0d2103282aa6a0a4ee9eb5f71d4f5424&token=55c59307d7b366ba8bca4049518eeef5fab1aa239bbf9b375872bcbebedd25e2',
+  searchBoard: 'https://api.trello.com/' + '/1/search?key=0d2103282aa6a0a4ee9eb5f71d4f5424&token=55c59307d7b366ba8bca4049518eeef5fab1aa239bbf9b375872bcbebedd25e2&query='
 
 };

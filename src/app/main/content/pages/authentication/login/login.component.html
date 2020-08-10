@@ -4,23 +4,19 @@
             <div class="logo" fxFlex="10%">
                 <img src="assets\images\fondo1.png" />
             </div>
-            <form name="loginForm" [formGroup]="loginForm" novalidate (ngSubmit)="onLogin()" fxFlex="20%" fxFlex.gt-sm="25%" class="form">
+            <form name="loginForm" novalidate (ngSubmit)="onLogin()" fxFlex="20%" fxFlex.gt-sm="25%" class="form">
                 <p class="title"> TREFIND </p>
                 <mat-form-field>
                     <input matInput formControlName="email" style="background: white; padding: 3%;" [(ngModel)]="email">
-                    <mat-error *ngIf="loginFormErrors.email.required">
-                        El nombre es obligatorio.
-                    </mat-error>
+
                 </mat-form-field>
                 <mat-form-field>
                     <input matInput formControlName="password" style="background: white; padding: 3%;" type="password" [(ngModel)]="password">
-                    <mat-error *ngIf="loginFormErrors.password.required">
-                        El nombre es obligatorio.
-                    </mat-error>
+
                 </mat-form-field>
                 <br>
                 <div class="submit-button">
-                    <button style="background-color: black; color: #0469a7;" mat-raised-button aria-label="LOGIN" [disabled]="loginForm.invalid" type="submit">
+                    <button style="background-color: black; color: #0469a7;" mat-raised-button aria-label="LOGIN" type="submit">
                         ENTRAR
                     </button>
                 </div>
